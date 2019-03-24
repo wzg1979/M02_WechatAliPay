@@ -23,7 +23,7 @@ public class TestPay : MonoBehaviour, PaySDKHandler {
 		
 	}
     void ShowResult(string result) {
-        txtResult.text += result;
+        txtResult.text += "\n"+result;
     }
     /// <summary>
     /// 微信支付
@@ -45,7 +45,7 @@ public class TestPay : MonoBehaviour, PaySDKHandler {
     void PayItem(PaySDKChannel channel) {
         //创建订单实例
         PaySDKOrder order = new PaySDKOrder();
-        order.orderId = "订单ID";
+        order.orderId = "123456789";
         order.amount = 1;//支付金额;  单位是分钱
         order.subject = "支付subject";
         order.body = "支付主体";
@@ -59,6 +59,7 @@ public class TestPay : MonoBehaviour, PaySDKHandler {
     #region 支付接口回调函数
     public bool onWillPay(string ticketId) {
         //throw new System.NotImplementedException();
+        ShowResult("onWillPay： ticketId----" + ticketId);
         return false;
     }
 
